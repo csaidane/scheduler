@@ -35,10 +35,23 @@ export default function Appointment(props) {
       interviewer
     };
     transition(SAVING)
-    props.bookInterview(props.id,interview)
+    props.bookInterview(props.id,interview, true)
     .then(()=>transition(SHOW))
     .catch((e)=>transition(ERROR_SAVE,true))
   }
+
+  function saveEdit(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+    transition(SAVING)
+    props.bookInterview(props.id,interview, false)
+    .then(()=>transition(SHOW))
+    .catch((e)=>transition(ERROR_SAVE,true))
+  }
+
+  
 
   function del(id){
     transition(CONFIRM)
@@ -55,7 +68,7 @@ export default function Appointment(props) {
   }
 
 
-  return(<article className="appointment">
+  return(<article className="appointment" data-testid="appointment">
     <Header time={props.time}/>
   {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
   {mode === SHOW && (
@@ -70,9 +83,9 @@ export default function Appointment(props) {
           onSave={save} 
           onCancel={back} />)}
   {mode === EDIT && (<Form interviewers={props.interviewers}
-          studentName = {props.interview.student}
+          name = {props.interview.student}
           interviewer={props.interview.interviewer.id}
-          onSave={save} 
+          onSave={saveEdit} 
           onCancel={back} />)}
           
   {mode === SAVING && (

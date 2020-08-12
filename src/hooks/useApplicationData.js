@@ -22,7 +22,7 @@ useEffect(()=>{
   })
 },[])
 
-function bookInterview(id, interview) {
+function bookInterview(id, interview,update) {
   const appointment = {
     ...state.appointments[id],
     interview: { ...interview }
@@ -35,6 +35,12 @@ function bookInterview(id, interview) {
     ...state,
     appointments
   });
+  if(update){
+    const today = state.days.find(day => day.appointments.includes(id));
+    const newDays = [...state.days];
+    const dayToChangeSpotsFor = newDays.find(newDay => newDay.id === today.id);
+    dayToChangeSpotsFor.spots = dayToChangeSpotsFor.spots -1;
+  }
   return axios.put('/api/appointments/'+id, {interview})  
 }
 
@@ -47,6 +53,10 @@ function deleteInterview(id) {
     ...state.appointments,
     [id]: appointment
   };
+  const today = state.days.find(day => day.appointments.includes(id));
+  const newDays = [...state.days];
+  const dayToChangeSpotsFor = newDays.find(newDay => newDay.id === today.id);
+  dayToChangeSpotsFor.spots = dayToChangeSpotsFor.spots + 1;
   return axios.delete('/api/appointments/'+id)
   .then(()=>{
     setState({
