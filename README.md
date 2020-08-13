@@ -9,8 +9,9 @@ as well as testing for React (Jest for unit and integration tests, Cypress for a
 To allow for a narrow focus on those topics, the app utilizes a Lighthouse API that handles the postgreSQL persistence layer.
 The calls to this API were handled using the Axios promised-based client for Node.js.
 
-I used storybook to develop all the different components in isolation. The total app is packaged using Webpack and Babel.
-It was created using Create React App. 
+I used storybook to develop all the different components in isolation. Storybook is still included for you to view all components in isolation.
+
+The complete app is packaged using Webpack and Babel, and was created using Create React App. 
  
 
 
@@ -40,7 +41,7 @@ npm run storybook
 
 1. Fork this repository, then clone your fork of this repository.
 2. Install dependencies using the `npm install` command.
-3. Use the lighthouse API which can be found !["here"](https://github.com/lighthouse-labs/scheduler-api). The app will be served at <http://localhost:8000/>.
+3. Use the lighthouse API which can be found ["here"](https://github.com/lighthouse-labs/scheduler-api). The app will be served at <http://localhost:8000/>.
 4. After having set up and launched the API, run the 'npm start' command
 5. Go to <http://localhost:8000/> in your browser (should happen automatically).
 
