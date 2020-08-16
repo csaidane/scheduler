@@ -1,11 +1,16 @@
 import {useState } from "react";
 
+
+
+//This hook is used to track the state of an appointment and conditionnally render the appropriate component
 export default function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
 
 
+  //The history of the component is tracked, so that a user can cancel changes and go back to the previous component
 
+  //This function moves us to another state
   function transition(mode, replace=false){
     if(replace===true){
       setMode(mode)
@@ -22,7 +27,7 @@ export default function useVisualMode(initial) {
   }
 
 
-
+  //This function takes us back
   function back(){
     if(history.length > 1){
       const temp = [...history]

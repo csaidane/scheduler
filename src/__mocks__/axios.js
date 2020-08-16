@@ -1,3 +1,4 @@
+//These are all mocks of the Axios package for the purposes of testing. They return dummy data upon call to the object bellow
 const fixtures = {
   days: [
     {

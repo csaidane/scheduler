@@ -4,7 +4,7 @@ import "components/InterviewerList.scss";
 import PropTypes from 'prop-types';
 
 
-
+//Comparable to DayList, this is a clickable container for a list of all possible interviewers
 export default function InterviewerList(props) {
 
   InterviewerList.propTypes = {

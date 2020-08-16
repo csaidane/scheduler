@@ -1,4 +1,6 @@
 describe("Appointments", () => {
+  //Always resets the database to avoid tests interacting.
+  //Always visits the root and selects monday as default day
   beforeEach(() => {
    cy.request("GET", "/api/debug/reset");
    cy.visit("/");

@@ -1,6 +1,6 @@
 import React from "react";
 
-
+//This component informs the user in case of server error when trying to interact with an interview
 export default function Error(props) {
   return(<main className="appointment__card appointment__card--error">
   <section className="appointment__error-message">

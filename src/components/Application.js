@@ -7,9 +7,10 @@ import {getInterview} from '../helpers/selectors.js'
 import {getInterviewersForDay} from 'helpers/selectors'
 import useApplicationData from '../hooks/useApplicationData.js'
 
-
+//This is the main application component
 export default function Application(props) {
 
+  //Tracks state for which day is selected and existing interviews
   const {
     state,
     setDay,
@@ -17,10 +18,13 @@ export default function Application(props) {
     deleteInterview
   } = useApplicationData();
   
+  //Returns all the appointments and interviewers corresponding to the current state, and performs some
+  //formatting on the data to provide adequate information to the components
   const appointments = getAppointmentsForDay(state, state.day);
   const interviewers = getInterviewersForDay(state,state.day);
   const schedule = appointments.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
+    //Returns a number of appointments with all the information obtained above
     return (
       <Appointment
         key={appointment.id}
@@ -34,7 +38,7 @@ export default function Application(props) {
     );
   });
 
-
+  //Main application can be found here
   return (
     <main className="layout">
       <section className="sidebar">

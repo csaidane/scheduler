@@ -4,17 +4,25 @@ import Button from "components/Button";
 import React, { useState } from 'react'
 
 
+//This component is a form that allows users to edit the given interview information
 export default function Form(props) {
+  //State is tracked to allow user to keep previous information upon hitting the "edit" button
   const [name, setStudentName] = useState(props.name || '');
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
+  //used to cancel user changes
   const reset = () => {
     setInterviewer(null)
     setStudentName('')
   };
+  //Calls previous function
+  const cancel = () => {
+    props.onCancel();
+    reset();
+  }
 
+  
+  //Error handling on user input
   const [error, setError] = useState("");
-
-
   function validate() {
     if (name === "") {
       setError("Student name cannot be blank");
@@ -24,11 +32,7 @@ export default function Form(props) {
     setError("");
     props.onSave(name, interviewer);
   }
-
-  const cancel = () => {
-    props.onCancel();
-    reset();
-  }
+  
   const save = ()=>{
     props.onSave(name,interviewer)
   };

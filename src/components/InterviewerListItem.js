@@ -2,6 +2,8 @@ import React from "react";
 import "components/InterviewerListItem.scss";
 var classnames = require('classnames');
 
+//This component represents all the interviewers available to book an interview with, and includes information such as
+//their names, picture, etc.
 export default function InterviewerListItem(props) {
   const interviewerClass = classnames("interviewers__item",{
     "interviewers__item--selected":props.selected

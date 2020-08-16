@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "components/Button";
 
-
+//This component will be used to get confirmation from a user in case of deleting an appointment
 export default function Confirm(props) {
   return(<main className="appointment__card appointment__card--confirm">
   <h1 className="text--semi-bold">{props.message}</h1>

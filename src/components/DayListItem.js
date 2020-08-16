@@ -3,6 +3,7 @@ import "components/DayListItem.scss";
 var classnames = require('classnames');
 
 
+//DayListItem component represents the days one can book an interview on (monday-friday)
 export default function DayListItem(props) {
 
   const dayClass = classnames("day-list__item", {
